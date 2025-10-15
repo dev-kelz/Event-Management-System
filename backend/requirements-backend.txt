@@ -1,0 +1,27 @@
+# Backend Dependencies for Event Manager API
+
+# Django Framework
+Django>=4.2.0,<5.0
+djangorestframework>=3.14.0
+
+# CORS handling
+django-cors-headers>=4.0.0
+
+# Database
+psycopg2-binary>=2.9.0  # PostgreSQL adapter (production)
+
+# Development Dependencies
+django-debug-toolbar>=4.0.0
+
+# Testing
+pytest>=7.0.0
+pytest-django>=4.5.0
+pytest-cov>=4.0.0
+
+# Code Quality
+black>=23.0.0
+flake8>=6.0.0
+isort>=5.12.0
+
+# Environment management
+python-decouple>=3.8
