@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
-  <rect width="300" height="200" fill="#F8F9FA"/>
-  <rect x="1" y="1" width="298" height="198" fill="none" stroke="#DEE2E6" stroke-width="2" stroke-dasharray="5,5"/>
-  <circle cx="150" cy="80" r="20" fill="#6C757D"/>
-  <path d="M130 120 L150 100 L170 120 L190 100 L210 120 L210 160 L90 160 L90 120 Z" fill="#ADB5BD"/>
-  <text x="150" y="180" text-anchor="middle" fill="#6C757D" font-family="Arial" font-size="14">Event Image Placeholder</text>
-</svg>
