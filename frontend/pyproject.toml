@@ -1,0 +1,106 @@
+# BeeWare/Briefcase configuration for Event Manager App
+
+[tool.briefcase]
+project_name = "Event Manager"
+bundle = "com.devkelz"
+version = "0.1.0"
+url = "https://github.com/Dev-Kelz/Event-Manager"
+license = "MIT License"
+author = "Dev Kelz"
+author_email = "kelz.codes@gmail.com"
+
+[tool.briefcase.app.event_manager]
+formal_name = "Event Manager"
+description = "A cross-platform event management mobile application"
+long_description = """A comprehensive event management system built with BeeWare/Toga.
+Connects to a Django REST API backend to create, view, and manage events on mobile devices."""
+sources = ["src/event_manager"]
+test_sources = ["src/tests"]
+
+requires = [
+    "toga>=0.4.0",
+    "requests>=2.31.0",
+]
+
+test_requires = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+]
+
+# Android configuration
+[tool.briefcase.app.event_manager.android]
+requires = [
+    "toga-android>=0.4.0",
+    "requests>=2.31.0",
+]
+build_gradle_dependencies = []
+version_code = 1
+base_theme = "Theme.AppCompat.Light.DarkActionBar"
+splash_background_color = "#FFFFFF"
+
+# iOS configuration
+[tool.briefcase.app.event_manager.iOS]
+requires = [
+    "toga-iOS>=0.4.0",
+    "requests>=2.31.0",
+]
+supported_orientations = ["portrait", "landscape"]
+requires_ios = "12.0"
+
+# Windows configuration
+[tool.briefcase.app.event_manager.windows]
+requires = [
+    "toga-winforms>=0.4.0",
+    "requests>=2.31.0",
+]
+
+# macOS configuration
+[tool.briefcase.app.event_manager.macOS]
+requires = [
+    "toga-cocoa>=0.4.0",
+    "requests>=2.31.0",
+]
+universal_build = true
+
+# Linux configuration
+[tool.briefcase.app.event_manager.linux]
+requires = [
+    "toga-gtk>=0.4.0",
+    "requests>=2.31.0",
+]
+system_requires = [
+    "gir1.2-webkit2-4.0",
+]
+
+# Python package configuration
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "event_manager"
+version = "0.1.0"
+description = "Event Manager mobile application built with BeeWare/Toga"
+authors = [
+    {name = "Dev Kelz", email = "kelz.codes@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "toga>=0.4.0",
+    "requests>=2.31.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "briefcase>=0.3.16",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["src/tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
