@@ -8,6 +8,7 @@ import toga
 from toga.style.pack import COLUMN, ROW, Pack
 from .services.api_client import APIClient
 from .screens.home_screen import HomeScreen
+from .screens.getstarted_screen import GetStartedScreen
 
 
 class EventManagerApp(toga.App):
@@ -33,14 +34,25 @@ class EventManagerApp(toga.App):
         This method is called when the app starts up and creates
         the main user interface.
         """
-        # Create the main window with home screen
+        # Create the main window with get started screen
         self.main_box = toga.Box(style=Pack(direction=COLUMN))
-        self.home_screen = HomeScreen()
-        self.main_box.add(self.home_screen)
+        self.get_started_screen = GetStartedScreen(on_get_started=self.show_home_screen)
+        self.main_box.add(self.get_started_screen)
 
         self.main_window = toga.MainWindow(title=self.formal_name)
         self.main_window.content = self.main_box
         self.main_window.show()
+
+    def show_home_screen(self):
+        """
+        Navigate from Get Started screen to Home screen.
+        """
+        # Remove get started screen
+        self.main_box.remove(self.get_started_screen)
+        
+        # Add home screen
+        self.home_screen = HomeScreen()
+        self.main_box.add(self.home_screen)
 
 
 def main():

@@ -17,6 +17,7 @@ sdist/
 var/
 wheels/
 *.egg-info/
+*.dist-info/
 .installed.cfg
 *.egg
 MANIFEST
@@ -44,6 +45,7 @@ event_manager_app/iOS/
 event_manager_app/windows/
 event_manager_app/macOS/
 event_manager_app/linux/
+frontend/logs/
 
 # IDEs
 .vscode/

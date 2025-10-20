@@ -5,7 +5,7 @@ project_name = "Event Manager"
 bundle = "com.devkelz"
 version = "0.1.0"
 url = "https://github.com/Dev-Kelz/Event-Manager"
-license = "MIT License"
+license = {text = "MIT License"}
 author = "Dev Kelz"
 author_email = "kelz.codes@gmail.com"
 
