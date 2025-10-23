@@ -5,7 +5,7 @@ project_name = "Event Manager"
 bundle = "com.devkelz"
 version = "0.1.0"
 url = "https://github.com/Dev-Kelz/Event-Manager"
-license = {text = "MIT License"}
+license = { text = "MIT License" }
 author = "Dev Kelz"
 author_email = "kelz.codes@gmail.com"
 
@@ -17,8 +17,8 @@ Connects to a Django REST API backend to create, view, and manage events on mobi
 sources = ["src/event_manager"]
 test_sources = ["src/tests"]
 
+# Only include cross-platform packages here, not platform-specific Toga
 requires = [
-    "toga>=0.4.0",
     "requests>=2.31.0",
 ]
 
@@ -30,18 +30,20 @@ test_requires = [
 # Android configuration
 [tool.briefcase.app.event_manager.android]
 requires = [
-    "toga-android>=0.4.0",
+    "toga-android==0.5.2",
     "requests>=2.31.0",
 ]
-build_gradle_dependencies = []
+build_gradle_dependencies = [
+    "androidx.appcompat:appcompat:1.4.2",
+]
 version_code = 1
-base_theme = "Theme.AppCompat.Light.DarkActionBar"
+base_theme = "Theme.AppCompat.Light"
 splash_background_color = "#FFFFFF"
 
 # iOS configuration
 [tool.briefcase.app.event_manager.iOS]
 requires = [
-    "toga-iOS>=0.4.0",
+    "toga-iOS>=0.5.2",
     "requests>=2.31.0",
 ]
 supported_orientations = ["portrait", "landscape"]
@@ -50,14 +52,14 @@ requires_ios = "12.0"
 # Windows configuration
 [tool.briefcase.app.event_manager.windows]
 requires = [
-    "toga-winforms>=0.4.0",
+    "toga-winforms>=0.5.2",
     "requests>=2.31.0",
 ]
 
 # macOS configuration
 [tool.briefcase.app.event_manager.macOS]
 requires = [
-    "toga-cocoa>=0.4.0",
+    "toga-cocoa>=0.5.2",
     "requests>=2.31.0",
 ]
 universal_build = true
@@ -65,7 +67,7 @@ universal_build = true
 # Linux configuration
 [tool.briefcase.app.event_manager.linux]
 requires = [
-    "toga-gtk>=0.4.0",
+    "toga-gtk>=0.5.2",
     "requests>=2.31.0",
 ]
 system_requires = [
@@ -82,12 +84,11 @@ name = "event_manager"
 version = "0.1.0"
 description = "Event Manager mobile application built with BeeWare/Toga"
 authors = [
-    {name = "Dev Kelz", email = "kelz.codes@gmail.com"}
+    { name = "Dev Kelz", email = "kelz.codes@gmail.com" }
 ]
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = [
-    "toga>=0.4.0",
     "requests>=2.31.0",
 ]
 
@@ -95,7 +96,7 @@ dependencies = [
 dev = [
     "pytest>=7.0.0",
     "pytest-cov>=4.0.0",
-    "briefcase>=0.3.16",
+    "briefcase==0.3.18",
 ]
 
 [tool.pytest.ini_options]
@@ -103,4 +104,3 @@ testpaths = ["src/tests"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
-
