@@ -1,5 +1,5 @@
 """
-API Client for Event Manager mobile app.
+API Client for Event Manager Kivy app.
 Handles communication with Django REST API backend.
 """
 

@@ -1,0 +1,32 @@
+<LoginScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 50
+        spacing: 20
+        
+        Label:
+            text: "Event Manager"
+            font_size: 32
+            size_hint_y: None
+            height: 100
+
+        TextInput:
+            id: username
+            hint_text: "Username"
+            multiline: False
+            size_hint_y: None
+            height: 40
+
+        TextInput:
+            id: password
+            hint_text: "Password"
+            password: True
+            multiline: False
+            size_hint_y: None
+            height: 40
+
+        Button:
+            text: "Login"
+            size_hint_y: None
+            height: 50
+            on_release: app.root.current = 'event_list'

@@ -2,18 +2,18 @@
 
 > **A Full-Stack Event Management System**
 >
-> Mobile app built with BeeWare/Toga + Django REST API backend
+> Mobile app built with Kivy + Django REST API backend
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue)
 ![Django](https://img.shields.io/badge/Django-4.2+-green)
-![BeeWare](https://img.shields.io/badge/BeeWare-Toga-orange)
+![Kivy](https://img.shields.io/badge/Kivy-2.0+-orange)
 
 ## 🎯 Project Overview
 
 Event Manager is a comprehensive event management system consisting of:
 
 - **Backend**: Django REST API with SQLite/PostgreSQL
-- **Frontend**: BeeWare/Toga cross-platform mobile app (iOS, Android, Desktop)
+- **Frontend**: Kivy cross-platform mobile app (iOS, Android, Desktop)
 
 Perfect for learning modern full-stack development!
 
@@ -30,7 +30,7 @@ Event-Manager/
 │   │   ├── wsgi.py
 │   │   └── asgi.py
 │   │
-│   ├── api/                        # API app for BeeWare
+│   ├── api/                        # API app for Kivy
 │   │   ├── __init__.py
 │   │   ├── models.py               # Database models (Events, Users)
 │   │   ├── views.py                # API logic
@@ -44,20 +44,13 @@ Event-Manager/
 │   ├── db.sqlite3                  # Dev database (auto-created)
 │   └── requirements.txt            # Backend dependencies
 │
-├── event_manager_app/              # BeeWare frontend app
-│   ├── src/
-│   │   ├── event_manager_app/
-│   │   │   ├── __init__.py
-│   │   │   ├── app.py              # BeeWare app entry
-│   │   │   ├── main_window.py      # UI code (buttons, labels, etc.)
-│   │   │   ├── api_client.py       # Connects to Django REST API
-│   │   │   └── utils.py            # Helper functions
-│   │   └── tests/
-│   │       └── test_ui.py
-│   │
-│   ├── build/                      # BeeWare build outputs
-│   ├── pyproject.toml              # BeeWare config file
-│   └── README.md
+├── frontend/                       # Kivy frontend app
+│   ├── kv/                         # Kivy UI layout files
+│   ├── screens/                    # Screen logic
+│   ├── utils/                      # Helper utilities
+│   ├── tests/                      # Tests
+│   ├── main.py                     # App entry point
+│   └── requirements.txt            # Frontend dependencies
 │
 ├── docs/                           # Documentation, reports, diagrams
 │   ├── README.md
@@ -105,30 +98,13 @@ Backend will be available at: `http://localhost:8000/api/`
 
 ```bash
 # Navigate to frontend
-cd event_manager_app
+cd frontend
 
 # Install dependencies
-pip install toga requests briefcase
+pip install -r requirements.txt
 
-# Run app (desktop mode for testing)
-cd src
-python -m event_manager_app.app
-```
-
-### 3. Build for Mobile
-
-```bash
-cd event_manager_app
-
-# Android
-briefcase create android
-briefcase build android
-briefcase run android
-
-# iOS (macOS only)
-briefcase create iOS
-briefcase build iOS
-briefcase run iOS
+# Run app
+python main.py
 ```
 
 ## 🔧 Development
@@ -152,16 +128,13 @@ python manage.py migrate
 ### Frontend Development
 
 ```bash
-cd event_manager_app
+cd frontend
 
-# Run in development mode (fastest)
-cd src && python -m event_manager_app.app
+# Run in development mode
+python main.py
 
-# Build for testing
-briefcase dev android  # or iOS
-
-# Package for distribution
-briefcase package android  # creates APK
+# Run tests
+pytest
 ```
 
 ## 📡 API Endpoints
@@ -201,15 +174,15 @@ curl -X POST http://localhost:8000/api/events/ \
 - **CORS**: django-cors-headers
 
 ### Frontend
-- **Framework**: BeeWare/Toga
+- **Framework**: Kivy
 - **Language**: Python 3.8+
 - **HTTP Client**: requests
-- **Packaging**: Briefcase
+- **UI Definition**: KV Language
 
 ## 📚 Documentation
 
 - [Backend API Docs](backend/README.md)
-- [Frontend App Docs](event_manager_app/README.md)
+- [Frontend App Docs](frontend/README.md)
 - [Database Schema](docs/database_schema.md)
 - [Full Documentation](docs/README.md)
 
@@ -221,7 +194,7 @@ cd backend
 pytest
 
 # Frontend tests
-cd event_manager_app/src
+cd frontend
 pytest
 ```
 
@@ -246,14 +219,12 @@ gunicorn event_manager.wsgi:application
 
 ### Frontend (App Stores)
 
+Use [Buildozer](https://buildozer.readthedocs.io/en/latest/) to package Kivy applications for Android and iOS.
+
 ```bash
-cd event_manager_app
-
-# Build release APK (Android)
-briefcase package android
-
-# Build IPA (iOS)
-briefcase package iOS
+# Example Buildozer commands (requires buildozer.spec)
+buildozer init
+buildozer -v android debug
 ```
 
 ## 🎓 For School Projects
@@ -297,8 +268,7 @@ MIT License
 ## 🙏 Acknowledgments
 
 - Built with [Django](https://www.djangoproject.com/)
-- Frontend powered by [BeeWare](https://beeware.org/)
-- Mobile packaging with [Briefcase](https://briefcase.readthedocs.io/)
+- Frontend powered by [Kivy](https://kivy.org/)
 
 ---
 
