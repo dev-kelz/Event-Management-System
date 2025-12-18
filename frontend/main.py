@@ -12,6 +12,8 @@ from utils.api_client import APIClient
 from screens.login_screen import LoginScreen
 from screens.event_list_screen import EventListScreen
 from screens.event_detail_screen import EventDetailScreen
+from screens.get_started_screen import GetStartedScreen
+from screens.signup_screen import SignUpScreen
 
 class EventManagerApp(App):
     def build(self):

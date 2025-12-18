@@ -1,0 +1,57 @@
+<GetStartedScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 40
+        spacing: 20
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Widget:
+            size_hint_y: 0.3
+
+        Label:
+            text: "Welcome to Event\nManagement!"
+            font_size: '32sp'
+            bold: True
+            color: 0.1, 0.1, 0.1, 1
+            halign: 'center'
+            valign: 'middle'
+            size_hint_y: None
+            height: self.texture_size[1] + 20
+
+        Label:
+            text: "Your one-stop solution for managing events"
+            font_size: '16sp'
+            color: 0.5, 0.5, 0.5, 1
+            halign: 'center'
+            size_hint_y: None
+            height: 40
+
+        Widget:
+            size_hint_y: 0.1
+
+        Button:
+            text: "Get Started"
+            font_size: '18sp'
+            size_hint_y: None
+            height: '50dp'
+            size_hint_x: 0.6
+            pos_hint: {'center_x': 0.5}
+            background_normal: ''
+            background_color: 0, 0.48, 1, 1
+            on_release: app.root.current = 'signup'
+
+        Label:
+            text: "Join thousands of event organizers"
+            font_size: '14sp'
+            color: 0.6, 0.6, 0.6, 1
+            halign: 'center'
+            size_hint_y: None
+            height: 40
+            
+        Widget:
+            size_hint_y: 0.3

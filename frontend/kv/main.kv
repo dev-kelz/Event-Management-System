@@ -1,7 +1,13 @@
 #:include kv/login.kv
 #:include kv/events.kv
+#:include kv/get_started.kv
+#:include kv/signup.kv
 
 ScreenManager:
+    GetStartedScreen:
+        name: 'get_started'
+    SignUpScreen:
+        name: 'signup'
     LoginScreen:
         name: 'login'
     EventListScreen:

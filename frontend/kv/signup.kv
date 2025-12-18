@@ -1,0 +1,64 @@
+<SignUpScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 50
+        spacing: 20
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        
+        Label:
+            text: "Sign Up"
+            font_size: '32sp'
+            bold: True
+            color: 0.1, 0.1, 0.1, 1
+            size_hint_y: None
+            height: 80
+
+        TextInput:
+            id: username
+            hint_text: "Username"
+            multiline: False
+            size_hint_y: None
+            height: '45dp'
+            write_tab: False
+
+        TextInput:
+            id: email
+            hint_text: "Email"
+            multiline: False
+            size_hint_y: None
+            height: '45dp'
+            write_tab: False
+
+        TextInput:
+            id: password
+            hint_text: "Password"
+            password: True
+            multiline: False
+            size_hint_y: None
+            height: '45dp'
+            write_tab: False
+
+        Button:
+            text: "Create Account"
+            size_hint_y: None
+            height: '50dp'
+            background_normal: ''
+            background_color: 0, 0.48, 1, 1
+            on_release: app.root.current = 'login'
+
+        Button:
+            text: "Already have an account? Log In"
+            size_hint_y: None
+            height: '40dp'
+            background_normal: ''
+            background_color: 0, 0, 0, 0
+            color: 0, 0.48, 1, 1
+            on_release: app.root.current = 'login'
+
+        Widget:
+            size_hint_y: 1
