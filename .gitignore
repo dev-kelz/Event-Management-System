@@ -1,4 +1,6 @@
+# ============================================
 # Python
+# ============================================
 __pycache__/
 *.py[cod]
 *$py.class
@@ -16,19 +18,31 @@ parts/
 sdist/
 var/
 wheels/
+pip-wheel-metadata/
+share/python-wheels/
 *.egg-info/
 *.dist-info/
 .installed.cfg
 *.egg
 MANIFEST
+*.manifest
+*.spec
 
-# Virtual Environment
+# ============================================
+# Virtual Environments
+# ============================================
 venv/
 ENV/
 env/
-.venv
+.venv/
+.env/
+virtualenv/
+pipenv/
+.Python
 
+# ============================================
 # Django
+# ============================================
 *.log
 local_settings.py
 db.sqlite3
@@ -36,49 +50,247 @@ db.sqlite3-journal
 /media
 /staticfiles
 /static
+*.pot
+*.pyc
+migrations/__pycache__/
+*.mo
+.sass-cache/
+celerybeat-schedule
+celerybeat.pid
 
-# BeeWare/Briefcase
-event_manager_app/build/
-event_manager_app/dist/
-event_manager_app/android/
-event_manager_app/iOS/
-event_manager_app/windows/
-event_manager_app/macOS/
-event_manager_app/linux/
-frontend/logs/
+# Django secret key
+secret_key.txt
 
-# IDEs
+# ============================================
+# Kivy
+# ============================================
+# Kivy build files
+.buildozer/
+bin/
+.gradle/
+local.properties
+
+# Kivy logs
+kivy_*.log
+*.kv.py
+
+# Kivy cache
+.kivy/
+
+# ============================================
+# Buildozer (Android/iOS deployment)
+# ============================================
+.buildozer/
+buildozer.spec.backup
+*.apk
+*.aab
+*.ipa
+*.app
+.gradle/
+local.properties
+
+# Android
+*.ap_
+*.dex
+*.class
+gen/
+out/
+captures/
+.externalNativeBuild
+.cxx/
+
+# iOS
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+xcuserdata/
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+
+# ============================================
+# IDEs and Editors
+# ============================================
+# VSCode
 .vscode/
+.history/
+*.code-workspace
+
+# PyCharm / IntelliJ
 .idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
 *.swp
 *.swo
 *~
-.DS_Store
+.*.swp
+.*.swo
 
-# Testing
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+
+# ============================================
+# Testing and Coverage
+# ============================================
 .pytest_cache/
 .coverage
+.coverage.*
 htmlcov/
 .tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
+.cache
+nosetests.xml
+test-results/
+junit.xml
 
-# Environment variables
+# ============================================
+# Environment Variables
+# ============================================
 .env
 .env.local
 .env.*.local
+.env.development
+.env.production
+.env.test
+*.env
 
+# ============================================
 # Logs
+# ============================================
+*.log
+logs/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pip-log.txt
+pip-delete-this-directory.txt
 
-# OS
-Thumbs.db
+# ============================================
+# Operating System
+# ============================================
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
 
-# Project specific
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.directory
+.Trash-*
+.nfs*
+
+# ============================================
+# Project Specific
+# ============================================
+# Backend
 backend/staticfiles/
 backend/media/
+backend/db.sqlite3
+backend/*.log
+
+# Frontend
+frontend/logs/
+frontend/.buildozer/
+
+# Documentation (temporary files)
+docs/~$*.docx
+docs/*.tmp
+
+# Secrets and credentials
+*.pem
+*.key
+*.cert
+*.crt
+secrets.json
+credentials.json
+
+# Database backups
+*.sql
+*.dump
+*.bak
+
+# Temporary files
+*.tmp
+*.temp
 *.pid
 *.seed
-*.log
+*.lock
 
+# Compiled files
+*.com
+*.dll
+*.exe
+*.o
+*.so
+
+# Archives
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# ============================================
+# Misc
+# ============================================
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+cython_debug/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Node modules (if any frontend JS tools are used)
+node_modules/
+package-lock.json
+yarn.lock

@@ -9,11 +9,14 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager
 
 from utils.api_client import APIClient
-from screens.login_screen import LoginScreen
-from screens.event_list_screen import EventListScreen
-from screens.event_detail_screen import EventDetailScreen
 from screens.get_started_screen import GetStartedScreen
 from screens.signup_screen import SignUpScreen
+from screens.login_screen import LoginScreen
+from screens.home_screen import HomeScreen
+from screens.event_list_screen import EventListScreen
+from screens.event_detail_screen import EventDetailScreen
+
+
 
 class EventManagerApp(App):
     def build(self):

@@ -1,0 +1,456 @@
+#:kivy 2.0
+
+<EventCard>:
+    orientation: 'vertical'
+    size_hint: None, None
+    size: dp(90), dp(110)
+    spacing: dp(5)
+    
+    canvas.before:
+        Color:
+            rgba: 0.1, 0.1, 0.1, 1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [dp(15)]
+    
+    AsyncImage:
+        source: root.image_source
+        size_hint: 1, None
+        height: dp(80)
+    
+    Label:
+        text: root.event_name
+        size_hint: 1, None
+        height: dp(25)
+        color: 1, 1, 1, 1
+        font_size: sp(11)
+        bold: True
+        halign: 'left'
+        valign: 'middle'
+        text_size: self.size
+        padding: dp(8), 0
+
+
+<UpcomingEventCard>:
+    orientation: 'vertical'
+    size_hint: None, None
+    size: dp(150), dp(140)
+    spacing: 0
+    
+    FloatLayout:
+        size_hint: 1, None
+        height: dp(110)
+        
+        canvas.before:
+            Color:
+                rgba: 0.2, 0.2, 0.2, 1
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [dp(15)]
+        
+        AsyncImage:
+            source: root.image_source
+            pos: root.pos
+            size: root.parent.size
+        
+        Button:
+            text: 'See Details'
+            size_hint: None, None
+            size: dp(100), dp(30)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            background_color: 1, 1, 1, 1
+            color: 0, 0, 0, 1
+            bold: True
+            font_size: sp(11)
+            on_release: root.on_see_details()
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [dp(15)]
+            background_normal: ''
+            background_down: ''
+    
+    Label:
+        text: root.event_name
+        size_hint: 1, None
+        height: dp(30)
+        color: 0, 0, 0, 1
+        font_size: sp(12)
+        bold: True
+        halign: 'left'
+        valign: 'middle'
+        text_size: self.size
+        padding: dp(5), 0
+
+
+<HomeScreen>:
+    name: 'home'
+    
+    BoxLayout:
+        orientation: 'vertical'
+        
+        canvas.before:
+            Color:
+                rgba: 0.98, 0.98, 0.98, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        
+        # Main scrollable content
+        ScrollView:
+            size_hint: 1, 1
+            do_scroll_x: False
+            do_scroll_y: True
+            
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                padding: dp(20), dp(20), dp(20), dp(80)
+                spacing: dp(20)
+                
+                # Header with welcome and icons
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: dp(50)
+                    spacing: dp(10)
+                    
+                    Label:
+                        text: f'Welcome {root.username}'
+                        color: 0, 0, 0, 1
+                        font_size: sp(22)
+                        bold: True
+                        halign: 'left'
+                        valign: 'middle'
+                        text_size: self.size
+                    
+                    Widget:
+                        size_hint_x: None
+                        width: dp(10)
+                    
+                    # Notification icon
+                    Button:
+                        size_hint: None, None
+                        size: dp(40), dp(40)
+                        background_normal: ''
+                        background_down: ''
+                        background_color: 0, 0, 0, 0
+                        on_release: root.on_notification_click()
+                        canvas.before:
+                            Color:
+                                rgba: 0.95, 0.95, 0.95, 1
+                            Ellipse:
+                                pos: self.pos
+                                size: self.size
+                        
+                        Label:
+                            text: '🔔'
+                            font_size: sp(20)
+                            pos: self.parent.pos
+                            size: self.parent.size
+                    
+                    # Profile image
+                    Button:
+                        size_hint: None, None
+                        size: dp(40), dp(40)
+                        background_normal: ''
+                        background_down: ''
+                        background_color: 0, 0, 0, 0
+                        on_release: root.on_profile_click()
+                        canvas.before:
+                            Color:
+                                rgba: 0.8, 0.4, 0.4, 1
+                            Ellipse:
+                                pos: self.pos
+                                size: self.size
+                
+                # Search bar
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: dp(45)
+                    spacing: dp(10)
+                    
+                    canvas.before:
+                        Color:
+                            rgba: 0.95, 0.95, 0.95, 1
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [dp(10)]
+                    
+                    TextInput:
+                        hint_text: 'Search'
+                        multiline: False
+                        background_color: 0, 0, 0, 0
+                        foreground_color: 0.3, 0.3, 0.3, 1
+                        hint_text_color: 0.6, 0.6, 0.6, 1
+                        padding: dp(15), dp(12)
+                        font_size: sp(14)
+                        cursor_color: 0, 0, 0, 1
+                        on_text: root.on_search(self.text)
+                    
+                    Label:
+                        text: '🔍'
+                        size_hint_x: None
+                        width: dp(40)
+                        font_size: sp(18)
+                        color: 0.5, 0.5, 0.5, 1
+                
+                # Create New Event button
+                Button:
+                    size_hint_y: None
+                    height: dp(60)
+                    background_normal: ''
+                    background_down: ''
+                    on_release: root.on_create_event()
+                    
+                    canvas.before:
+                        Color:
+                            rgba: 0.05, 0.05, 0.05, 1
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [dp(15)]
+                    
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        padding: dp(20), 0
+                        spacing: dp(15)
+                        
+                        Label:
+                            text: '+'
+                            size_hint_x: None
+                            width: dp(30)
+                            font_size: sp(32)
+                            color: 1, 1, 1, 1
+                        
+                        BoxLayout:
+                            orientation: 'vertical'
+                            spacing: dp(2)
+                            
+                            Label:
+                                text: 'Create New Event'
+                                color: 1, 1, 1, 1
+                                font_size: sp(16)
+                                bold: True
+                                halign: 'left'
+                                valign: 'bottom'
+                                text_size: self.size
+                            
+                            Label:
+                                text: 'Start planning your next event'
+                                color: 0.7, 0.7, 0.7, 1
+                                font_size: sp(12)
+                                halign: 'left'
+                                valign: 'top'
+                                text_size: self.size
+                        
+                        Label:
+                            text: '→'
+                            size_hint_x: None
+                            width: dp(30)
+                            font_size: sp(24)
+                            color: 1, 1, 1, 1
+                
+                # Event section header
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: dp(30)
+                    
+                    Label:
+                        text: 'Event'
+                        color: 0, 0, 0, 1
+                        font_size: sp(18)
+                        bold: True
+                        halign: 'left'
+                        valign: 'middle'
+                        text_size: self.size
+                    
+                    Button:
+                        text: 'See all'
+                        size_hint_x: None
+                        width: dp(60)
+                        color: 0.4, 0.4, 0.4, 1
+                        font_size: sp(13)
+                        background_color: 0, 0, 0, 0
+                        background_normal: ''
+                        background_down: ''
+                        on_release: root.on_see_all_events()
+                
+                # Event categories horizontal scroll
+                ScrollView:
+                    size_hint_y: None
+                    height: dp(110)
+                    do_scroll_x: True
+                    do_scroll_y: False
+                    bar_width: 0
+                    
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint_x: None
+                        width: self.minimum_width
+                        spacing: dp(15)
+                        
+                        EventCard:
+                            image_source: 'assets/images/events/turf_ground.png'
+                            event_name: 'Turf Ground'
+                        
+                        EventCard:
+                            image_source: 'assets/images/events/wedding_venue.png'
+                            event_name: 'Wedding Venues'
+                        
+                        EventCard:
+                            image_source: 'assets/images/events/meeting_venue.png'
+                            event_name: 'Meeting Venues'
+                        
+                        EventCard:
+                            image_source: 'assets/images/events/party_hall.png'
+                            event_name: 'Party Hall'
+                
+                # Upcoming Event section header
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: dp(30)
+                    
+                    Label:
+                        text: 'Upcoming Event'
+                        color: 0, 0, 0, 1
+                        font_size: sp(18)
+                        bold: True
+                        halign: 'left'
+                        valign: 'middle'
+                        text_size: self.size
+                    
+                    Button:
+                        text: 'See all'
+                        size_hint_x: None
+                        width: dp(60)
+                        color: 0.4, 0.4, 0.4, 1
+                        font_size: sp(13)
+                        background_color: 0, 0, 0, 0
+                        background_normal: ''
+                        background_down: ''
+                        on_release: root.on_see_all_upcoming()
+                
+                # Upcoming events horizontal scroll
+                ScrollView:
+                    size_hint_y: None
+                    height: dp(140)
+                    do_scroll_x: True
+                    do_scroll_y: False
+                    bar_width: 0
+                    
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        size_hint_x: None
+                        width: self.minimum_width
+                        spacing: dp(15)
+                        
+                        UpcomingEventCard:
+                            image_source: 'assets/images/events/tech_meeting.png'
+                            event_name: 'Tech meeting'
+                        
+                        UpcomingEventCard:
+                            image_source: 'assets/images/events/fastapi_webinar.png'
+                            event_name: 'FastAPI Webinar'
+        
+        # Bottom Navigation Bar
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, None
+            height: dp(60)
+            padding: dp(20), 0
+            spacing: 0
+            
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                Color:
+                    rgba: 0.9, 0.9, 0.9, 1
+                Line:
+                    points: [self.pos[0], self.pos[1] + self.height, self.pos[0] + self.width, self.pos[1] + self.height]
+                    width: 1
+            
+            Button:
+                background_normal: ''
+                background_down: ''
+                background_color: 0, 0, 0, 0
+                
+                BoxLayout:
+                    orientation: 'vertical'
+                    spacing: dp(2)
+                    padding: 0, dp(8)
+                    
+                    Label:
+                        text: '🏠'
+                        font_size: sp(22)
+                        size_hint_y: None
+                        height: dp(28)
+                    
+                    Label:
+                        text: 'Home'
+                        font_size: sp(11)
+                        color: 0, 0, 0, 1
+                        bold: True
+                        size_hint_y: None
+                        height: dp(18)
+            
+            Button:
+                background_normal: ''
+                background_down: ''
+                background_color: 0, 0, 0, 0
+                
+                BoxLayout:
+                    orientation: 'vertical'
+                    spacing: dp(2)
+                    padding: 0, dp(8)
+                    
+                    Label:
+                        text: '📋'
+                        font_size: sp(22)
+                        color: 0.5, 0.5, 0.5, 1
+                        size_hint_y: None
+                        height: dp(28)
+                    
+                    Label:
+                        text: 'Task'
+                        font_size: sp(11)
+                        color: 0.5, 0.5, 0.5, 1
+                        size_hint_y: None
+                        height: dp(18)
+            
+            Button:
+                background_normal: ''
+                background_down: ''
+                background_color: 0, 0, 0, 0
+                
+                BoxLayout:
+                    orientation: 'vertical'
+                    spacing: dp(2)
+                    padding: 0, dp(8)
+                    
+                    Label:
+                        text: '👤'
+                        font_size: sp(22)
+                        color: 0.5, 0.5, 0.5, 1
+                        size_hint_y: None
+                        height: dp(28)
+                    
+                    Label:
+                        text: 'Profile'
+                        font_size: sp(11)
+                        color: 0.5, 0.5, 0.5, 1
+                        size_hint_y: None
+                        height: dp(18)
