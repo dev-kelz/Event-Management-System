@@ -15,6 +15,11 @@ from screens.login_screen import LoginScreen
 from screens.home_screen import HomeScreen
 from screens.event_list_screen import EventListScreen
 from screens.event_detail_screen import EventDetailScreen
+from screens.create_event_screen import CreateEventScreen
+from screens.notification_screen import NotificationScreen
+from screens.profile_screen import ProfileScreen
+from screens.task_list_screen import TaskListScreen
+from screens.task_management_screen import TaskManagementScreen
 
 
 

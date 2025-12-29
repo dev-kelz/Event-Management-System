@@ -1,0 +1,65 @@
+<NotificationScreen>:
+    name: 'notification'
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        # Header with back button and title
+        BoxLayout:
+            size_hint_y: None
+            height: '56dp'
+            padding: '16dp'
+            spacing: '16dp'
+            
+            Button:
+                text: '←'
+                size_hint_x: None
+                width: '48dp'
+                height: '48dp'
+                font_size: '24sp'
+                background_color: [0, 0, 0, 0]
+                color: [0.2, 0.2, 0.2, 1]
+                on_release: root.navigate_back()
+            
+            Label:
+                text: 'Notifications'
+                font_size: '20sp'
+                bold: True
+                color: [0.2, 0.2, 0.2, 1]
+                halign: 'center'
+                text_size: self.width, None
+
+        # Main content area
+        BoxLayout:
+            orientation: 'vertical'
+            padding: '40dp'
+            spacing: '24dp'
+            
+            # Bell icon with line through it (using text representation)
+            Label:
+                text: '○'
+                font_size: '80sp'
+                color: [0.6, 0.6, 0.6, 1]
+                halign: 'center'
+                size_hint_y: None
+                height: '100dp'
+            
+            # No Notifications title
+            Label:
+                text: 'No Notifications'
+                font_size: '24sp'
+                bold: True
+                color: [0.2, 0.2, 0.2, 1]
+                halign: 'center'
+                size_hint_y: None
+                height: '40dp'
+            
+            # Description text
+            Label:
+                text: "You're all caught up! We'll notify you when there's something new."
+                font_size: '16sp'
+                color: [0.6, 0.6, 0.6, 1]
+                halign: 'center'
+                text_size: self.width - 40, None
+                size_hint_y: None
+                height: self.texture_size[1]

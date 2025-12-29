@@ -3,6 +3,10 @@
 #:include kv/events.kv
 #:include kv/get_started.kv
 #:include kv/signup.kv
+#:include kv/create_event.kv
+#:include kv/notification.kv
+#:include kv/profile.kv
+#:include kv/task_management.kv
 
 ScreenManager:
     GetStartedScreen:
@@ -17,3 +21,13 @@ ScreenManager:
         name: 'event_list'
     EventDetailScreen:
         name: 'event_detail'
+    CreateEventScreen:
+        name: 'create_event'
+    NotificationScreen:
+        name: 'notification'
+    ProfileScreen:
+        name: 'profile'
+    TaskListScreen:
+        name: 'task_list'
+    TaskManagementScreen:
+        name: 'task_management'

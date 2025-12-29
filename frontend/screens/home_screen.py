@@ -74,7 +74,8 @@ class HomeScreen(Screen):
     def on_notification_click(self):
         """Handle notification icon click"""
         print("Notifications clicked")
-        # TODO: Navigate to notifications screen
+        # Navigate to notifications screen
+        self.manager.current = 'notification'
     
     def on_profile_click(self):
         """Handle profile icon click"""
@@ -95,3 +96,28 @@ class HomeScreen(Screen):
         """Handle floating action button click"""
         print("Add event clicked")
         self.on_create_event()
+    
+    def on_home_tab_click(self):
+        """Handle Home tab click in bottom navigation"""
+        print("Home tab clicked")
+        # Already on home screen, could refresh or scroll to top
+        pass
+    
+    def on_event_tab_click(self):
+        """Handle Event tab click in bottom navigation"""
+        print("Event tab clicked")
+        # Navigate to event list screen
+        self.manager.current = 'event_list'
+    
+    def on_task_tab_click(self):
+        """Handle Task tab click in bottom navigation"""
+        print("Task tab clicked")
+        # Navigate to task list screen
+        self.manager.current = 'task_list'
+    
+    def on_profile_tab_click(self):
+        """Handle Profile tab click in bottom navigation"""
+        print("Profile tab clicked")
+        # TODO: Navigate to profile screen when it's created
+        # self.manager.current = 'profile'
+

@@ -111,7 +111,7 @@
                 orientation: 'vertical'
                 size_hint_y: None
                 height: self.minimum_height
-                padding: dp(20), dp(20), dp(20), dp(80)
+                padding: dp(20), dp(15), dp(20), dp(80)
                 spacing: dp(20)
                 
                 # Header with welcome and icons
@@ -151,9 +151,12 @@
                         
                         Label:
                             text: '🔔'
-                            font_size: sp(20)
+                            font_size: sp(18)
+                            color: 0.4, 0.4, 0.4, 1
                             pos: self.parent.pos
                             size: self.parent.size
+                            halign: 'center'
+                            valign: 'middle'
                     
                     # Profile image
                     Button:
@@ -165,10 +168,17 @@
                         on_release: root.on_profile_click()
                         canvas.before:
                             Color:
-                                rgba: 0.8, 0.4, 0.4, 1
+                                rgba: 0.9, 0.9, 0.9, 1
                             Ellipse:
                                 pos: self.pos
                                 size: self.size
+                        
+                        Label:
+                            text: '👤'
+                            font_size: sp(18)
+                            color: 0.4, 0.4, 0.4, 1
+                            pos: self.parent.pos
+                            size: self.parent.size
                 
                 # Search bar
                 BoxLayout:
@@ -274,6 +284,10 @@
                         valign: 'middle'
                         text_size: self.size
                     
+                    Widget:
+                        size_hint_x: None
+                        width: dp(10)
+                    
                     Button:
                         text: 'See all'
                         size_hint_x: None
@@ -330,6 +344,10 @@
                         valign: 'middle'
                         text_size: self.size
                     
+                    Widget:
+                        size_hint_x: None
+                        width: dp(10)
+                    
                     Button:
                         text: 'See all'
                         size_hint_x: None
@@ -363,6 +381,28 @@
                             image_source: 'assets/images/events/fastapi_webinar.png'
                             event_name: 'FastAPI Webinar'
         
+        # Floating Action Button
+        Button:
+            size_hint: None, None
+            size: dp(56), dp(56)
+            pos_hint: {'right': 0.95, 'bottom': 0.12}
+            background_normal: ''
+            background_down: ''
+            on_release: root.on_add_event()
+            
+            canvas.before:
+                Color:
+                    rgba: 0.05, 0.05, 0.05, 1
+                Ellipse:
+                    pos: self.pos
+                    size: self.size
+            
+            Label:
+                text: '+'
+                font_size: sp(32)
+                color: 1, 1, 1, 1
+                bold: True
+        
         # Bottom Navigation Bar
         BoxLayout:
             orientation: 'horizontal'
@@ -387,17 +427,31 @@
                 background_normal: ''
                 background_down: ''
                 background_color: 0, 0, 0, 0
+                on_release: root.on_home_tab_click()
                 
                 BoxLayout:
                     orientation: 'vertical'
                     spacing: dp(2)
                     padding: 0, dp(8)
                     
-                    Label:
-                        text: '🏠'
-                        font_size: sp(22)
+                    FloatLayout:
                         size_hint_y: None
                         height: dp(28)
+                        
+                        canvas.before:
+                            Color:
+                                rgba: 0, 0.48, 1, 1
+                            Ellipse:
+                                pos: self.center_x - dp(14), self.center_y - dp(14)
+                                size: dp(28), dp(28)
+                        
+                        Label:
+                            text: '🏠'
+                            font_size: sp(14)
+                            bold: True
+                            color: 1, 1, 1, 1
+                            pos: root.pos
+                            size: root.size
                     
                     Label:
                         text: 'Home'
@@ -411,18 +465,31 @@
                 background_normal: ''
                 background_down: ''
                 background_color: 0, 0, 0, 0
+                on_release: root.on_task_tab_click()
                 
                 BoxLayout:
                     orientation: 'vertical'
                     spacing: dp(2)
                     padding: 0, dp(8)
                     
-                    Label:
-                        text: '📋'
-                        font_size: sp(22)
-                        color: 0.5, 0.5, 0.5, 1
+                    FloatLayout:
                         size_hint_y: None
                         height: dp(28)
+                        
+                        canvas.before:
+                            Color:
+                                rgba: 0.85, 0.85, 0.85, 1
+                            Ellipse:
+                                pos: self.center_x - dp(14), self.center_y - dp(14)
+                                size: dp(28), dp(28)
+                        
+                        Label:
+                            text: '✓'
+                            font_size: sp(16)
+                            bold: True
+                            color: 0.4, 0.4, 0.4, 1
+                            pos: root.pos
+                            size: root.size
                     
                     Label:
                         text: 'Task'
@@ -435,18 +502,31 @@
                 background_normal: ''
                 background_down: ''
                 background_color: 0, 0, 0, 0
+                on_release: root.on_profile_tab_click()
                 
                 BoxLayout:
                     orientation: 'vertical'
                     spacing: dp(2)
                     padding: 0, dp(8)
                     
-                    Label:
-                        text: '👤'
-                        font_size: sp(22)
-                        color: 0.5, 0.5, 0.5, 1
+                    FloatLayout:
                         size_hint_y: None
                         height: dp(28)
+                        
+                        canvas.before:
+                            Color:
+                                rgba: 0.85, 0.85, 0.85, 1
+                            Ellipse:
+                                pos: self.center_x - dp(14), self.center_y - dp(14)
+                                size: dp(28), dp(28)
+                        
+                        Label:
+                            text: '👤'
+                            font_size: sp(14)
+                            bold: True
+                            color: 0.4, 0.4, 0.4, 1
+                            pos: root.pos
+                            size: root.size
                     
                     Label:
                         text: 'Profile'
