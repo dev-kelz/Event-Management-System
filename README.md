@@ -87,4 +87,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 Email: kelz.codes@gmail.com
 
-Project Link: [https://github.com/Dev-Kelz/Event-Management-System](https://github.com/Dev-Kelz/event-management-system)
+Project Link: [https://github.com/ConsoleLord/Event-Management-System](https://github.com/ConsoleLord/event-management-system)
